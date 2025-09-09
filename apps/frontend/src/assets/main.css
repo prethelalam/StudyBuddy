@@ -1,8 +1,11 @@
-@import './base.css';
-@tailwind base;
-@tailwind components;
-@tailwind utilities;
+/* Tailwind v4: these must come first */
 @import "tailwindcss";
+@plugin "daisyui" {
+  themes: retro, dim;
+};
+
+/* now your own CSS can come after */
+@import "./base.css";
 
 
 

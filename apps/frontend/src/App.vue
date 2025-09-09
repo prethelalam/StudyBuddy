@@ -1,14 +1,37 @@
 <script setup>
-import { RouterLink, RouterView } from 'vue-router'
-import HelloWorld from './components/HelloWorld.vue'
+import { ref, watch, onMounted } from 'vue'
+
+const themes = ['retro', 'dim']           // use any you like
+const currentTheme = ref(localStorage.getItem('theme') || themes[0])
+
+function applyTheme(t) {
+  // set on both html and body (extra-safe for DaisyUI)
+  document.documentElement.setAttribute('data-theme', t)
+  document.body.setAttribute('data-theme', t)
+  localStorage.setItem('theme', t)
+}
+
+onMounted(() => applyTheme(currentTheme.value))
+watch(currentTheme, (t) => applyTheme(t))
 </script>
+
 
 <template>
   <div class="min-h-screen flex items-center justify-center bg-base-200">
-    <div class="card w-96 bg-base-100 shadow-xl">
-      <div class="card-body">
+    <div class="card w-[28rem] bg-base-100 shadow-xl">
+      <div class="card-body gap-4">
         <h2 class="card-title">Hello DaisyUI 🌼</h2>
-        <p>This card is styled with DaisyUI!</p>
+        <p class="text-base-content/70">
+          Use the switcher to toggle themes. Your choice is saved.
+        </p>
+
+        <div class="flex items-center gap-3">
+          <span class="font-medium">Theme:</span>
+          <select v-model="currentTheme" class="select select-bordered w-40">
+            <option v-for="t in themes" :key="t" :value="t">{{ t }}</option>
+          </select>
+        </div>
+
         <div class="card-actions justify-end">
           <button class="btn btn-primary">Get Started</button>
         </div>
@@ -20,65 +43,5 @@ import HelloWorld from './components/HelloWorld.vue'
 
 
 <style scoped>
-header {
-  line-height: 1.5;
-  max-height: 100vh;
-}
-
-.logo {
-  display: block;
-  margin: 0 auto 2rem;
-}
-
-nav {
-  width: 100%;
-  font-size: 12px;
-  text-align: center;
-  margin-top: 2rem;
-}
-
-nav a.router-link-exact-active {
-  color: var(--color-text);
-}
-
-nav a.router-link-exact-active:hover {
-  background-color: transparent;
-}
-
-nav a {
-  display: inline-block;
-  padding: 0 1rem;
-  border-left: 1px solid var(--color-border);
-}
-
-nav a:first-of-type {
-  border: 0;
-}
-
-@media (min-width: 1024px) {
-  header {
-    display: flex;
-    place-items: center;
-    padding-right: calc(var(--section-gap) / 2);
-  }
-
-  .logo {
-    margin: 0 2rem 0 0;
-  }
-
-  header .wrapper {
-    display: flex;
-    place-items: flex-start;
-    flex-wrap: wrap;
-  }
-
-  nav {
-    text-align: left;
-    margin-left: -1rem;
-    font-size: 1rem;
-
-    padding: 1rem 0;
-    margin-top: 1rem;
-  }
-}
+/* optional extra styles here */
 </style>
