@@ -4,12 +4,19 @@ import HelloWorld from './components/HelloWorld.vue'
 </script>
 
 <template>
-  <div class="min-h-screen grid place-items-center">
-    <button class="px-6 py-3 rounded-xl bg-blue-600 text-white shadow hover:bg-blue-700">
-      Tailwind is working 🎉
-    </button>
+  <div class="min-h-screen flex items-center justify-center bg-base-200">
+    <div class="card w-96 bg-base-100 shadow-xl">
+      <div class="card-body">
+        <h2 class="card-title">Hello DaisyUI 🌼</h2>
+        <p>This card is styled with DaisyUI!</p>
+        <div class="card-actions justify-end">
+          <button class="btn btn-primary">Get Started</button>
+        </div>
+      </div>
+    </div>
   </div>
 </template>
+
 
 
 <style scoped>

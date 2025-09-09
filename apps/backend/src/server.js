@@ -1,7 +1,7 @@
 import express from "express";
 
 const app = express();
-const PORT = process.env.PORT || 4000;
+const PORT = process.env.PORT || 4001;
 
 // Middleware to parse JSON request bodies
 app.use(express.json());
