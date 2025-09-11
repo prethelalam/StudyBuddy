@@ -1,5 +1,6 @@
 <script setup>
 import { ref, watch, onMounted } from 'vue'
+import Navbar from '/components/Navbar'
 
 const themes = ['retro', 'dim']           // use any you like
 const currentTheme = ref(localStorage.getItem('theme') || themes[0])
