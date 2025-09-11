@@ -31,9 +31,4 @@ function toggle() {
     this.isOpen = true;
   }
 };
-
-// export the navbar
-export default {
-  name: 'Navbar'
-};
 </script>

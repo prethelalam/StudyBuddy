@@ -1,8 +1,18 @@
 <script setup>
+// ref is used to store reactive values that can change over time
+// computed create a reactive, automatically updated value based on other reactive values - not sure if i need this
 import { ref, watch, onMounted } from 'vue'
-import Navbar from '/components/Navbar'
 
-const themes = ['retro', 'dim']           // use any you like
+// import the Navbar
+import Navbar from './components/Navbar.vue'
+
+// Navbar route
+const routes = {
+  path: '/', component: Navbar
+}
+
+
+const themes = ['retro', 'dim'] // use any you like
 const currentTheme = ref(localStorage.getItem('theme') || themes[0])
 
 function applyTheme(t) {
@@ -18,7 +28,7 @@ watch(currentTheme, (t) => applyTheme(t))
 
 
 <template>
-  <div class="min-h-screen flex items-center justify-center bg-base-200">
+  <!-- <div class="min-h-screen flex items-center justify-center bg-base-200">
     <div class="card w-[28rem] bg-base-100 shadow-xl">
       <div class="card-body gap-4">
         <h2 class="card-title">Hello DaisyUI 🌼</h2>
@@ -38,6 +48,11 @@ watch(currentTheme, (t) => applyTheme(t))
         </div>
       </div>
     </div>
+  </div> -->
+  <!-- app is below -->
+  <div id="app">
+    <Navbar></Navbar> <!-- this is how to make the navbar get rendered -->
+    <router-view></router-view> <!-- this is how to make the navbar actually appear -->
   </div>
 </template>
 
