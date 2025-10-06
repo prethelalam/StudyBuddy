@@ -1,41 +1,47 @@
 <template>
 <!-- navbar set up -->
   <nav class="navbar bg-base-100 shadow-sm">
-    <div class="container flex-none">
-      <button class="btn btn-square btn-ghost">
-        <!-- hamburger menu -->
-        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" class="inline-block h-5 w-5 stroke-current"> <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"></path> </svg>
-        <ul :class="{ 'nav-links': true, 'open': isOpen }">
-        <!-- router-link is a vue component -->
-        <li><router-link to="/home" @click="toggle">Home</router-link></li>
-        <li><router-link to="/dashboard" @click="toggle">Dashboard</router-link></li>
-        <li><router-link to="/quiz" @click="toggle">Quiz</router-link></li>
-        <li><router-link to="/profile" @click="toggle">Profile</router-link></li>
-      </ul>
-      </button>
-      <div class="flex-1">
-        <a class="btn btn-ghost text-xl">Study Buddy</a>
-      </div>
-      <div class="flex-none">
-    <button class="btn btn-square btn-ghost">
-      <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" class="inline-block h-5 w-5 stroke-current"> <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 12h.01M12 12h.01M19 12h.01M6 12a1 1 0 11-2 0 1 1 0 012 0zm7 0a1 1 0 11-2 0 1 1 0 012 0zm7 0a1 1 0 11-2 0 1 1 0 012 0z"></path> </svg>
-    </button>
-  </div>
+    <!-- create a reactive container -->
+    <div class="flex-1">
+      <!-- create a naviagation link using vue router -->
+      <router-link class="btn btn-ghost text-xl" to="/">Study Buddy</router-link>
+    </div>
 
-      <div class="logo">
-        <router-link to="/">Logo for the time being</router-link>
-      </div>
-      <div class="menu-icon" @click="toggle">
-        <i :class="isOpen ? 'fas fa-times' : 'fas fa-bars'"></i>
-      </div>
-      <!-- create an unordered list with data binding. true means it always applys the css; isOpen is a variable  -->
-      <!-- <ul :class="{ 'nav-links': true, 'open': isOpen }">
-        router-link is a vue component
-        <li><router-link to="/home" @click="toggle">Home</router-link></li>
-        <li><router-link to="/dashboard" @click="toggle">Dashboard</router-link></li>
-        <li><router-link to="/quiz" @click="toggle">Quiz</router-link></li>
-        <li><router-link to="/profile" @click="toggle">Profile</router-link></li>
-      </ul> -->
+    <!-- desktop nav -->
+    <!-- create an unordered list -->
+    <ul class="menu menu-horizontal hidden md:flex px-1">
+      <!-- create your tabs here -->
+      <li><router-link to="/home">Home</router-link></li>
+      <li><router-link to="/dashboard">Dashboard</router-link></li>
+      <li><router-link to="/quiz">Quiz</router-link></li>
+      <li><router-link to="/profile">Profile</router-link></li>
+    </ul>
+
+    <!-- mobile hamburger menu -->
+    <div class="relative md:hidden flex-none">
+      <!-- create a button, apply style, and apply an action -->
+      <button
+        class="btn btn-square btn-ghost"
+        :aria-expanded="isOpen"
+        @click="toggle">
+        <!-- hamburger icon (got from daisyUI) -->
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" class="inline-block h-5 w-5 stroke-current" fill="none">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"/>
+        </svg>
+      </button>
+
+      <!-- drop down panel -->
+      <!-- create an unordered list -->
+      <ul
+        v-show="isOpen"
+        class="menu dropdown-content absolute right-0 mt-2 w-48 p-2 bg-base-100 shadow rounded-box z-50"
+        >
+        <!-- create your tabs here -->
+        <li><router-link to="/home">Home</router-link></li>
+        <li><router-link to="/dashboard">Dashboard</router-link></li>
+        <li><router-link to="/quiz">Quiz</router-link></li>
+        <li><router-link to="/profile">Profile</router-link></li>
+      </ul>
     </div>
   </nav>
 </template>
@@ -43,12 +49,17 @@
 <script setup>
 
 // function to toggle on and off
-function toggle() {
-  if (this.isOpen == true) {
-    this.isOpen = false;
-  }
-  else if (this.isOpen == false) {
-    this.isOpen = true;
-  }
-};
+// function toggle() {
+//   if (this.isOpen == true) {
+//     this.isOpen = false;
+//   }
+//   else if (this.isOpen == false) {
+//     this.isOpen = true;
+//   }
+// };
+
+// make a reactive flag
+const isOpen = ref(false)
+const toggle = () => (isOpen.value = !isOpen.value)
+const close = () => (isOpen.value = false)
 </script>
