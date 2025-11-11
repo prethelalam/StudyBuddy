@@ -47,18 +47,11 @@
 </template>
 
 <script setup>
+// need to import ref in order to use it below
+import { ref } from 'vue';
 
-// function to toggle on and off
-// function toggle() {
-//   if (this.isOpen == true) {
-//     this.isOpen = false;
-//   }
-//   else if (this.isOpen == false) {
-//     this.isOpen = true;
-//   }
-// };
 
-// make a reactive flag
+// make a reactive flag to close and open the hamburger menu
 const isOpen = ref(false)
 const toggle = () => (isOpen.value = !isOpen.value)
 const close = () => (isOpen.value = false)
