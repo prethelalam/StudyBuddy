@@ -27,10 +27,10 @@ watch(currentTheme, (t) => applyTheme(t))
 </script>
 
 
-<template>
+<template >
   <!-- app is below -->
-  <div id="app">
-    <Navbar></Navbar> <!-- this is how to make the navbar get rendered -->
+  <div id="app" class="min-h-screen bg-[#e4d8b4]">
+    <Navbar class="font-mono"></Navbar> <!-- this is how to make the navbar get rendered -->
     <router-view></router-view> <!-- this is how to make the navbar actually appear -->
   </div>
 </template>

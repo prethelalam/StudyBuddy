@@ -1,0 +1,4 @@
+/* we need to import tailwind css and daisyui here */
+@import "tailwindcss";
+@plugin "daisyui";
+
