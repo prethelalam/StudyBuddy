@@ -4,6 +4,11 @@
     <!-- create a reactive container -->
     <div class="flex-1">
       <!-- create a naviagation link using vue router -->
+      <!-- <div class="w-15 rounded-full">
+          <img
+            alt="Tailwind CSS Navbar component"
+            src="/images/StudyBuddyLogo.png" />
+        </div> -->
       <router-link class="btn btn-ghost text-xl" to="/home">Study Buddy</router-link>
     </div>
 

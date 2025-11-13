@@ -8,7 +8,7 @@ const router = createRouter({
     {
       path: '/home',
       name: 'Home',
-      component: () => import('../views/HomeView.vue'), // dynamic routing
+      component: () => import('../views/Home.vue'), // dynamic routing
     },
     {
       path: '/dashboard',
