@@ -13,7 +13,9 @@ const routes = {
 
 
 const themes = ['retro', 'dim'] // use any you like
-const currentTheme = ref(localStorage.getItem('theme') || themes[0])
+  // if you want to change a theme, do a hard reset
+
+const currentTheme = ref('retro')
 
 function applyTheme(t) {
   // set on both html and body (extra-safe for DaisyUI)
@@ -29,7 +31,7 @@ watch(currentTheme, (t) => applyTheme(t))
 
 <template >
   <!-- app is below -->
-  <div id="app" class="min-h-screen bg-[#e4d8b4]">
+  <div id="app" class="min-h-screen">
     <Navbar class="font-mono"></Navbar> <!-- this is how to make the navbar get rendered -->
     <router-view></router-view> <!-- this is how to make the navbar actually appear -->
   </div>

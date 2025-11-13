@@ -5,22 +5,28 @@
 <template>
   <main>
     <div class="font-mono">
-      <h1>testing the page</h1>
-      <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Iusto libero aut non corrupti? Unde corrupti atque beatae adipisci eum ex, fugit tempora dicta blanditiis illo, voluptatem, neque dolor voluptate. Dolorum.</p>
     </div>
 
     <div
       class="hero min-h-screen"
-      style="background-image: url('/images/StudyBuddyLogo.png')" >
+      style="background-image: url('/images/heroImageNoText.png')" >
   <div class="hero-overlay"></div>
   <div class="hero-content text-neutral-content text-center">
     <div class="max-w-md">
-      <h1 class="mb-5 text-5xl font-bold">Hello there</h1>
+      <h1 class="mb-5 text-5xl font-bold">Welcome to Study Buddy</h1>
       <p class="mb-5">
-        Provident cupiditate voluptatem et in. Quaerat fugiat ut assumenda excepturi exercitationem
-        quasi. In deleniti eaque aut repudiandae et a id nisi.
+        Study Buddy helps you stay on track, stay motivated, and study with confidence. Whether you’re preparing for exams, reviewing class concepts, or building better study habits, Study Buddy gives you structure, encouragement, and the tools to grow.
       </p>
-      <button class="btn btn-primary">Get Started</button>
+      <!-- use a router link in order to make clickable button go to profile page -->
+      <router-link
+        to="/profile"
+        custom v-slot="{ href }"
+      >
+      <a :href="href" class="btn btn-primary">
+        Get Started
+      </a>
+      </router-link>
+      <!-- <button class="btn btn-primary">Get Started</button> -->
     </div>
   </div>
 </div>

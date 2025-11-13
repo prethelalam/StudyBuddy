@@ -1,6 +1,6 @@
 <template>
 <!-- navbar set up -->
-  <nav class="navbar shadow-sm">
+  <nav class="navbar bg-accent shadow-sm">
     <!-- create a reactive container -->
     <div class="flex-1">
       <!-- create a naviagation link using vue router -->
