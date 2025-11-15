@@ -3,12 +3,14 @@
 // computed create a reactive, automatically updated value based on other reactive values - not sure if i need this
 import { ref, watch, onMounted } from 'vue'
 
-// import the Navbar
+// imports from components
 import Navbar from './components/Navbar.vue'
+import Footer from './components/Footer.vue'
 
-// Navbar route
+// routes for components
 const routes = {
-  path: '/', component: Navbar
+  path: '/', component: Navbar,
+  path: '/', component: Footer
 }
 
 
@@ -33,7 +35,10 @@ watch(currentTheme, (t) => applyTheme(t))
   <!-- app is below -->
   <div id="app" class="min-h-screen">
     <Navbar class="font-mono"></Navbar> <!-- this is how to make the navbar get rendered -->
-    <router-view></router-view> <!-- this is how to make the navbar actually appear -->
+    <main class="flex-1">
+      <router-view></router-view> <!-- this is how to make the navbar actually appear -->
+    </main>
+    <Footer class="font-mono"></Footer>
   </div>
 </template>
 
