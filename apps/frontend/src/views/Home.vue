@@ -27,6 +27,9 @@
       </a>
       </router-link>
       <!-- <button class="btn btn-primary">Get Started</button> -->
+      <div>
+        <!-- testing -->
+      </div>
     </div>
   </div>
 </div>
