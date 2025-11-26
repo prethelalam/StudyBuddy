@@ -38,7 +38,7 @@ watch(currentTheme, (t) => applyTheme(t))
     <main class="flex-1">
       <router-view></router-view> <!-- this is how to make the navbar actually appear -->
     </main>
-    <Footer class="font-mono"></Footer>
+    <!-- <Footer class="font-mono"></Footer> -->
   </div>
 </template>
 
