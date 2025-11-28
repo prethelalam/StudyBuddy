@@ -1,4 +1,6 @@
 <script setup>
+import { isLoggedIn } from '@/utils/auth';
+
 //import TheWelcome from '../components/TheWelcome.vue'
 </script>
 
@@ -17,10 +19,24 @@
           <p class="mb-5">
             Study Buddy helps you stay on track, stay motivated, and study with confidence. Whether you’re preparing for exams, reviewing class concepts, or building better study habits, Study Buddy gives you structure, encouragement, and the tools to grow.
           </p>
-      <!-- use a router link in order to make clickable button go to profile page -->
-      <router-link
-        to="/profile"
+      <!-- use a router link in order to make clickable button go to profile page
+
+      if user is logged in then go to dashboard, if not have them make a profile
+      -->
+      <router-link v-if="isLoggedIn()"
+          to="/dashboard"
+          custom v-slot="{ href }"
+      >
+      <a :href="href" class="btn btn-primary">
+        Go to dashboard
+      </a>
+
+      </router-link>
+
+      <router-link v-else
+        to="/profile-auth"
         custom v-slot="{ href }"
+
       >
       <a :href="href" class="btn btn-primary">
         Get Started

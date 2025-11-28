@@ -1,21 +1,49 @@
 <script setup>
+// import ref to use values and router (in order to navigate to new pages)
 import { ref } from 'vue'
+import { useRouter } from 'vue-router'
 
-// signup or login mode
+
+// signup or login mode in order to change the modes, we're going to start at signup
 const mode = ref('signup')
 
-// form data
+// router instance to change the vue or route
+const router = useRouter()
+
+// form data for user input
 const email = ref('')
 const password = ref('')
 
 // function to submit
 const handleSubmit = () => {
+  // added a user object for fake data until supabase is added
+  const user = {
+    email: email.value,
+    mode: mode.value,
+  }
+
+  // temporarily store the "logged in user" in localStorage
+  localStorage.setItem('studybuddy_user', JSON.stringify(user))
+
+  // if user clicked singip
   if (mode.value === 'signup') {
-    console.log('sign up with', { email: email.value, password: password.value })
+    console.log('sign up with', user)
     // call supabase
+    // after sign up, always go to profile setup page
+    router.push('/profile-setup')
   } else {
-    console.log('login with', { email: email.value, password: password.value })
+    console.log('login with', user)
     // call supabase
+    // check if user has a saved profile
+    const hasProfile = !!localStorage.getItem('studybuddy_profile')
+    router.push(hasProfile ? '/profile' : '/profile-setup')
+
+    // if profile exists then go to profile page and if not then go to setup page
+    if (hasProfile) {
+      router.push('/profile')
+    } else {
+      router.push('/profile-setup')
+    }
   }
 }
 
@@ -55,7 +83,7 @@ const handleSubmit = () => {
             <span class="label-text">Password</span>
           </label>
           <input
-            v-model="Password"
+            v-model="password"
             type="password"
             class="input input-bordered w-full"
             placeholder="password"

@@ -1,3 +1,17 @@
+<script setup>
+// need to import ref in order to use it below
+import { ref } from 'vue';
+
+// import helper function
+import { isLoggedIn } from '@/utils/auth'
+
+
+// make a reactive flag to close and open the hamburger menu
+const isOpen = ref(false)
+const toggle = () => (isOpen.value = !isOpen.value)
+const close = () => (isOpen.value = false)
+</script>
+
 <template>
 <!-- navbar set up -->
   <nav class="navbar bg-accent shadow-sm">
@@ -20,9 +34,8 @@
         <li><router-link to="/home">Home</router-link></li>
         <li><router-link to="/dashboard">Dashboard</router-link></li>
         <li><router-link to="/quiz">Quiz</router-link></li>
-        <li><router-link to="/profile">Profile</router-link></li>
+        <li><router-link :to="isLoggedIn() ? '/profile' : '/profile-auth'">Profile</router-link></li>
       </ul>
-
     </div>
 
 
@@ -53,19 +66,8 @@
         <li><router-link to="/home">Home</router-link></li>
         <li><router-link to="/dashboard">Dashboard</router-link></li>
         <li><router-link to="/quiz">Quiz</router-link></li>
-        <li><router-link to="/profile">Profile</router-link></li>
+        <li><router-link to="/profile-auth">Profile</router-link></li>
       </ul>
     </div>
   </nav>
 </template>
-
-<script setup>
-// need to import ref in order to use it below
-import { ref } from 'vue';
-
-
-// make a reactive flag to close and open the hamburger menu
-const isOpen = ref(false)
-const toggle = () => (isOpen.value = !isOpen.value)
-const close = () => (isOpen.value = false)
-</script>

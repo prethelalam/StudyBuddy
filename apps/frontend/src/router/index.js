@@ -21,9 +21,19 @@ const router = createRouter({
       component: () => import('../views/Quiz.vue'),
     },
     {
+      path: '/profile-auth',
+      name: 'ProfileAuth',
+      component: () => import('../views/ProfileAuth.vue'),
+    },
+    {
+      path: '/profile-setup',
+      name: 'ProfileSetup',
+      component: () => import('../views/ProfileSetup.vue'),
+    },
+    {
       path: '/profile',
-      name: 'Profile',
-      component: () => import('../views/Profile.vue'),
+      name: 'profile',
+      component: () => import('../views/ProfileView.vue'),
     }
   ],
 })
